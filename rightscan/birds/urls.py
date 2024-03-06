@@ -5,4 +5,5 @@ app_name = 'birds'
 
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),  # просмотр главной страницы
+    path('upload/', views.BirdsShow.as_view(), name='show-all-birds'),  # просмотр всех птиц
 ]

@@ -1,0 +1,27 @@
+{% extends 'birds/base.html'  %}
+{% load static %}
+
+
+{% block title %}просмотр списка птиц{% endblock %}
+
+{% block content %}
+<div class="base">
+    <div>
+        <h2>Просмотр записей Birds</h2>
+    </div>
+    <div>
+        {% if birds %}
+        {% for one_bird in family %}
+        <ul>
+            <li>Имя: {{ one_family.name }}</li>
+            <li>Цвет: {{ one_family.color }}</li>
+        </ul>
+        {% endfor %}
+        {% else %}
+        <div>
+            <h3>Записей еще нет</h3>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
