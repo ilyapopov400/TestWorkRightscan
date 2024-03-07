@@ -127,4 +127,4 @@ AUTH_USER_MODEL = 'auth.User'  # стандартная модель User
 # Основной url для управления медиафайлами
 MEDIA_URL = '/media/'
 # Путь хранения картинок
-MEDIA_ROOT = os.path.join
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

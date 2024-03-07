@@ -11,10 +11,11 @@
     </div>
     <div>
         {% if birds %}
-        {% for one_bird in family %}
+        {% for one_bird in birds %}
         <ul>
-            <li>Имя: {{ one_family.name }}</li>
-            <li>Цвет: {{ one_family.color }}</li>
+            <li>Имя: {{ one_bird.name }}</li>
+            <li>Цвет: {{ one_bird.color }}</li>
+            <li>Изображение: {{ one_bird.image }}</li>
         </ul>
         {% endfor %}
         {% else %}
