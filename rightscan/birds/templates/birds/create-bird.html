@@ -1,0 +1,29 @@
+{% extends 'birds/base.html'  %}
+{% load static %}
+
+
+{% block title %}создание карточки Bird{% endblock %}
+
+{% block content %}
+<div class="base">
+    <div>
+        <h2>Создание карточки Bird</h2>
+    </div>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+        <div>
+            {% for bird_field in form %}
+            <p>{{ bird_field.label_tag }} {{ bird_field }}</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            <button type="submit" value="Save">создать карточку для птицы</button> |
+            <button type="reset">очистить форму</button>
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
