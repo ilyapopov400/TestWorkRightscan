@@ -6,7 +6,6 @@ from django.views.generic.edit import CreateView
 from django.contrib import messages
 
 from . import models
-from . import forms
 
 
 # Create your views here.
@@ -36,9 +35,9 @@ class TouchBird(CreateView):
     fields = "__all__"
     success_url = reverse_lazy('birds:index')
 
-    def form_valid(self, form):
-        form.save()
-        return super(TouchBird, self).form_valid(form)
+    # def form_valid(self, form):
+    #     form.save()
+    #     return super(TouchBird, self).form_valid(form)
 
     # def form_valid(self, form):
     #     form.instance.user = self.request.user

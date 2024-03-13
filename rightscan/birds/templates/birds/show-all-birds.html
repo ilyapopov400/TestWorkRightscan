@@ -11,13 +11,17 @@
     </div>
     <div>
         {% if birds %}
+
         {% for one_bird in birds %}
         <ul>
-            <li>Имя: {{ one_bird.name }}</li>
-            <li>Цвет: {{ one_bird.color }}</li>
-            <li>Изображение: {{ one_bird.image }}</li>
+            <div>
+                <li>Имя: {{ one_bird.name }}</li>
+                <li>Цвет: {{ one_bird.color }}</li>
+                <li>Изображение: <img src="{{ one_bird.image.url }}" alt="картинка птицы" height="5%" width="5%"></li>
+            </div>
         </ul>
         {% endfor %}
+
         {% else %}
         <div>
             <h3>Записей еще нет</h3>
