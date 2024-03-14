@@ -1,0 +1,25 @@
+{% extends 'birds/base.html'  %}
+{% load static %}
+
+{% block title %}просмотр одной птицы{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Просмотр одной птицы</h1>
+    {% if bird %}
+    <ul>
+        <div>
+            <li>Имя птицы: {{ bird.name }}</li>
+            <li>Цвет птицы: {{ bird.color }}</li>
+            <li>Изображение птицы:
+                <img src="{{ bird.image.url }}" alt="картинка птицы" height="5%" width="5%">
+            </li>
+        </div>
+    </ul>
+    {% else %}
+    <div>
+        <h3>Записей еще нет</h3>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

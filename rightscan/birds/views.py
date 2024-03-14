@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, DeleteView
 from django.views.generic.edit import CreateView
 from django.contrib import messages
 
@@ -24,6 +24,16 @@ class BirdsShow(ListView):
     template_name = 'birds/show-all-birds.html'
     model = models.Birds
     context_object_name = 'birds'
+
+
+class OneBird(DetailView, DeleteView):
+    """
+    Показ одной птицы и возможность ее удалить
+    """
+    template_name = 'birds/bird-detail.html'
+    model = models.Birds
+    context_object_name = 'bird'
+    success_url = reverse_lazy('birds:index')
 
 
 class TouchBird(CreateView):
