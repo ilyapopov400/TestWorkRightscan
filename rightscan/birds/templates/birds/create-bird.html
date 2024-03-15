@@ -12,17 +12,16 @@
     <div class="card-bird">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            <div>
+                {% for bird_field in form %}
+                <p>{{ bird_field.label_tag }} {{ bird_field }}</p>
+                {% endfor %}
+            </div>
 
-        <div>
-            {% for bird_field in form %}
-            <p>{{ bird_field.label_tag }} {{ bird_field }}</p>
-            {% endfor %}
-        </div>
-
-        <div>
-            <button type="submit" value="Save">создать карточку для птицы</button> |
-            <button type="reset">очистить форму</button>
-        </div>
+            <div>
+                <button type="submit" value="Save">создать карточку для птицы</button> |
+                <button type="reset">очистить форму</button>
+            </div>
         </form>
     </div>
 </div>

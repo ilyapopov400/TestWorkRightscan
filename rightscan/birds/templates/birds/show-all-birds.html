@@ -14,8 +14,6 @@
         <div class="card-bird">
         <ul>
             <li>Имя: {{ one_bird.name }}</li>
-            <li>Цвет: {{ one_bird.color }}</li>
-            <li>Изображение: <img src="{{ one_bird.image.url }}" alt="картинка птицы" height="5%" width="5%"></li>
             <li><a href="{% url 'birds:one-bird-detail' pk=one_bird.pk%}">перейти к просмотру птицы</a></li>
         </ul>
         </div>
