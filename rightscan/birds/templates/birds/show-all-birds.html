@@ -5,29 +5,25 @@
 {% block title %}просмотр списка птиц{% endblock %}
 
 {% block content %}
-<div class="base">
-    <div>
-        <h2>Просмотр записей Birds</h2>
-    </div>
-    <div>
-        {% if birds %}
-
+<div>
+    <h2>Просмотр записей Birds</h2>
+</div>
+<div>
+    {% if birds %}
         {% for one_bird in birds %}
+        <div class="card-bird">
         <ul>
-            <div>
-                <li>Имя: {{ one_bird.name }}</li>
-                <li>Цвет: {{ one_bird.color }}</li>
-                <li>Изображение: <img src="{{ one_bird.image.url }}" alt="картинка птицы" height="5%" width="5%"></li>
-                <li><a href="{% url 'birds:one-bird-detail' pk=one_bird.pk%}">перейти к просмотру птицы</a></li>
-            </div>
+            <li>Имя: {{ one_bird.name }}</li>
+            <li>Цвет: {{ one_bird.color }}</li>
+            <li>Изображение: <img src="{{ one_bird.image.url }}" alt="картинка птицы" height="5%" width="5%"></li>
+            <li><a href="{% url 'birds:one-bird-detail' pk=one_bird.pk%}">перейти к просмотру птицы</a></li>
         </ul>
+        </div>
         {% endfor %}
-
-        {% else %}
-        <div>
+    {% else %}
+        <div class="card-bird">
             <h3>Записей еще нет</h3>
         </div>
-        {% endif %}
-    </div>
+    {% endif %}
 </div>
 {% endblock %}

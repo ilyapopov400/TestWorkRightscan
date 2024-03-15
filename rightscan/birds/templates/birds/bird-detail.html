@@ -7,17 +7,26 @@
 <div>
     <h1>Просмотр одной птицы</h1>
     {% if bird %}
-    <ul>
-        <div>
-            <li>Имя птицы: {{ bird.name }}</li>
-            <li>Цвет птицы: {{ bird.color }}</li>
-            <li>Изображение птицы:
-                <img src="{{ bird.image.url }}" alt="картинка птицы" height="5%" width="5%">
-            </li>
-        </div>
-    </ul>
+    <div class="card-bird">
+        <ul>
+            <div>
+                <li>Имя птицы: {{ bird.name }}</li>
+                <li>Цвет птицы: {{ bird.color }}</li>
+                <li>Изображение птицы:
+                    <img src="{{ bird.image.url }}" alt="картинка птицы" height="5%" width="5%">
+                </li>
+            </div>
+            <div class="delete-card">
+                <form method="post">
+                {% csrf_token %}
+                <p>Удалить карточку птицы: "{{ object }}"?</p>
+                <input type="submit" value="Удалить птицу!">
+                </form>
+            </div>
+        </ul>
+    </div>
     {% else %}
-    <div>
+    <div class="card-bird">
         <h3>Записей еще нет</h3>
     </div>
     {% endif %}
