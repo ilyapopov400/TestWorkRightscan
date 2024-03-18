@@ -17,13 +17,14 @@
                     <img src="{{ bird.image.url }}" alt="картинка птицы" height="5%" width="5%">
                 </li>
             </div>
-            <div class="delete-card">
-                <form method="post">
-                {% csrf_token %}
-                <p>Удалить карточку птицы: "{{ object }}"?</p>
-                <input type="submit" value="Удалить птицу!">
-                </form>
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <button type="submit" value="Save">поставить лайк</button>
             </div>
+        </form>
+
+
         </ul>
     </div>
     {% else %}
