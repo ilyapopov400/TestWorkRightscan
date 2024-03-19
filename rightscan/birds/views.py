@@ -5,7 +5,9 @@ from django.views.generic import ListView, DetailView, DeleteView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views import View
 from django.contrib import messages
+import os
 
+import rightscan.settings
 from . import models
 from . import forms
 
@@ -75,3 +77,15 @@ class DeleteBird(DeleteView):
     template_name = 'birds/bird-delete.html'
     success_url = reverse_lazy('birds:index')
     context_object_name = 'bird'
+
+    def post(self, request, pk):
+        """
+        Удаление файла птицы в директории "media"
+        :param request:
+        :param pk:
+        :return:
+        """
+        bird = models.Birds.objects.get(id=pk)
+        os.remove("{}/{}".format(rightscan.settings.MEDIA_ROOT, bird.image))
+        result = super(DeleteBird, self).post(request, pk)
+        return result
