@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView, DetailView, DeleteView
+from django.views.generic import ListView, DeleteView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views import View
-from django.contrib import messages
+
 import os
 
 import rightscan.settings
@@ -60,13 +60,7 @@ class CreateBird(CreateView):
     form_class = forms.FormBirds
     template_name = "birds/create-bird.html"
     model = models.Birds
-    # fields = ["name", "color", "image"]
     success_url = reverse_lazy('birds:index')
-
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user
-    #     messages.success(self.request, "The task was created successfully.")
-    #     return super(TouchBird, self).form_valid(form)
 
 
 class DeleteBird(DeleteView):
