@@ -65,3 +65,13 @@ class CreateBird(CreateView):
     #     form.instance.user = self.request.user
     #     messages.success(self.request, "The task was created successfully.")
     #     return super(TouchBird, self).form_valid(form)
+
+
+class DeleteBird(DeleteView):
+    """
+    Удаление карточки птицы
+    """
+    model = models.Birds
+    template_name = 'birds/bird-delete.html'
+    success_url = reverse_lazy('birds:index')
+    context_object_name = 'bird'

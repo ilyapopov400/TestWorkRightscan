@@ -5,7 +5,7 @@
 
 {% block content %}
 <div>
-    <h1>Просмотр одной птицы</h1>
+    <h1>Удаление одной птицы</h1>
     {% if bird %}
     <div class="card-bird">
         <ul>
@@ -18,14 +18,13 @@
                 </li>
             </div>
             <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div>
-                <button type="submit" value="Save">поставить лайк</button>
-            </div>
-        </form>
-        <div>
-            <a href="{% url 'birds:one-bird-delete' pk=bird.pk%}">перейти к удалению птицы</a>
-        </div>
+                {% csrf_token %}
+                <div>
+                    <button type="submit" value="Save">удалить птицу</button>
+                </div>
+            </form>
+
+
         </ul>
     </div>
     {% else %}
