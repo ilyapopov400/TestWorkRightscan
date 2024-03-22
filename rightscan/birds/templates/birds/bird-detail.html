@@ -17,16 +17,31 @@
                     <img src="{{ bird.image.url }}" alt="картинка птицы" height="5%" width="5%">
                 </li>
             </div>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post">
             {% csrf_token %}
-            <div>
-                <button type="submit" value="Save">поставить лайк</button>
-            </div>
-        </form>
+                <div>
+                    <button type="submit" value="Like">поставить лайк</button>
+                </div>
+            </form>
         <div>
             <a href="{% url 'birds:one-bird-delete' pk=bird.pk%}">перейти к удалению птицы</a>
         </div>
         </ul>
+
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <p>{{ delete }}</p>
+            </div>
+
+            <div>
+                <button type="submit" value="Save">Удаление</button>
+            </div>
+        </form>
+
+
+
     </div>
     {% else %}
     <div class="card-bird">

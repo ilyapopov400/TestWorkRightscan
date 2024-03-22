@@ -34,13 +34,14 @@ class OneBird(View):
     """
     Показ одной птицы
     Проставление лайка птице
-    и возможность ее удалить - не реализованно
     """
 
     def get(self, request, pk=None):
         bird = models.Birds.objects.get(id=pk)
         template_name = "birds/bird-detail.html"
-        context = {"bird": bird}
+        form_delete = forms.FormDelete()
+        context = {"bird": bird,
+                   "delete": form_delete}
         return render(request=request, template_name=template_name, context=context)
 
     def post(self, request, pk=None):
@@ -50,6 +51,12 @@ class OneBird(View):
         like = models.Birds.objects.get(id=pk).like + 1
         bird.like = like
         bird.save()
+
+        form_delete = forms.FormDelete(request.POST)
+        if form_delete.is_valid():
+            if form_delete.cleaned_data.get("delete"):
+                bird.delete()
+                return render(request=request, template_name="birds/index.html")
         return render(request=request, template_name=template_name, context=context)
 
 
